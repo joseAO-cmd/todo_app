@@ -14,6 +14,7 @@ class TodoApp extends StatelessWidget {
     return MaterialApp(
       title: 'To-Do App',
       debugShowCheckedModeBanner: false,
+      
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -22,6 +23,7 @@ class TodoApp extends StatelessWidget {
       home: const HomePage(
 
       ),
+     
     );
   }
 }
