@@ -35,7 +35,13 @@ class _HomePageState extends State<HomePage> {
               });
               Navigator.of(context).pop();
             },
-            child: const Text("Eliminar"),
+            child: const Text(
+              "Eliminar",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
@@ -93,8 +99,12 @@ class _HomePageState extends State<HomePage> {
                   if (_dialogController.text.isNotEmpty) {
                     setState(() {
                       _tasks[index].title = _dialogController.text;
+                      _tasks[index].description = _descriptionController.text;
+                      _tasks[index].date = _selectedDate ?? _tasks[index].date;
                     });
                     _dialogController.clear();
+                    _descriptionController.clear();
+                    _selectedDate = null;
                     Navigator.of(context).pop();
                   }
                 },
@@ -146,7 +156,18 @@ class _HomePageState extends State<HomePage> {
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              IconButton(
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  backgroundColor: const Color.fromARGB(255, 39, 207, 120),
+                                  foregroundColor:
+                                      Colors.white,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 20,
+                                    vertical: 12,
+                                  ),
+                            
+                                ),
+
                                 onPressed: () {
                                   showDialog(
                                     context: context,
@@ -180,9 +201,9 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   );
                                 },
-                                icon: const Icon(
-                                  Icons.details,
-                                  color: Colors.grey,
+                                child: Text(
+                                  "Detalles",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
                               IconButton(
@@ -307,10 +328,3 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-
-
-
-
-// Modifcar el detalle
-// Cuando se edite modificar el detalle
-// cambiar lo de predeterminado en el calendario
